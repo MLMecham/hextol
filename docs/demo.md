@@ -12,7 +12,6 @@ your screen (Chrome and Edge; other browsers can use the color picker).
 <div class="hx-card">
 <div class="hx-swatch" id="hx-swatch-A"></div>
 <div class="hx-controls">
-<span class="hx-side">A</span>
 <input class="hx-hex" id="hx-hex-A" value="#3B82F6" spellcheck="false">
 <input class="hx-native" id="hx-native-A" type="color" value="#3B82F6" title="Pick">
 <button class="hx-btn" id="hx-eye-A" type="button">Screen</button>
@@ -22,7 +21,6 @@ your screen (Chrome and Edge; other browsers can use the color picker).
 <div class="hx-card">
 <div class="hx-swatch" id="hx-swatch-B"></div>
 <div class="hx-controls">
-<span class="hx-side">B</span>
 <input class="hx-hex" id="hx-hex-B" value="#2F7BEE" spellcheck="false">
 <input class="hx-native" id="hx-native-B" type="color" value="#2F7BEE" title="Pick">
 <button class="hx-btn" id="hx-eye-B" type="button">Screen</button>
@@ -45,12 +43,11 @@ your screen (Chrome and Edge; other browsers can use the color picker).
 <style>
 #hx-demo{background:#0F1526;border:1px solid #2E3854;border-radius:10px;
   padding:24px;color:#E6EAF2;font-family:"Segoe UI",system-ui,sans-serif;
-  max-width:640px}
+  max-width:720px;margin:0 auto}
 #hx-demo .hx-cards{display:flex;align-items:center;justify-content:center;gap:14px}
 #hx-demo .hx-card{background:#1A2138;border:1px solid #2E3854;border-radius:8px;padding:10px}
 #hx-demo .hx-swatch{width:190px;height:110px;background:#232B45;border-radius:4px}
-#hx-demo .hx-controls{display:flex;align-items:center;gap:8px;margin-top:10px}
-#hx-demo .hx-side{color:#8B93A7;font-weight:600}
+#hx-demo .hx-controls{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
 #hx-demo .hx-vs{color:#8B93A7;font-weight:600}
 #hx-demo .hx-hex{width:86px;background:#232B45;color:#E6EAF2;border:1px solid #2E3854;
   border-radius:4px;padding:4px 6px;font-family:Consolas,monospace;text-align:center}
@@ -68,7 +65,7 @@ your screen (Chrome and Edge; other browsers can use the color picker).
 #hx-demo .hx-accent{color:#2DD4BF;font-family:Consolas,monospace;width:44px}
 #hx-demo .hx-table{width:100%;margin-top:16px;border-collapse:collapse;font-size:.85rem}
 #hx-demo .hx-table th{color:#8B93A7;text-align:left;font-size:.7rem;
-  text-transform:uppercase;letter-spacing:.05em;padding:4px 8px}
+  text-transform:uppercase;letter-spacing:.05em;padding:4px 8px;white-space:nowrap}
 #hx-demo .hx-table td{padding:5px 8px;border-top:1px solid #232B45}
 #hx-demo .hx-name{font-weight:600}
 #hx-demo .hx-num{font-family:Consolas,monospace}
