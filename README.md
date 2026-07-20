@@ -1,12 +1,29 @@
 # hextol
 
-**Hexadecimal comparison utilities.**
+**Hexadecimal tolerance** — compare colors within a tolerance.
 
-Support package for the epic [KeyDaemon](https://mlmecham.github.io/keydeamon/) — and for anywhere else hex values need comparing.
+Support package for the epic [KeyDaemon](https://mlmecham.github.io/keydeamon/) — and for anywhere else hex values need comparing. Zero dependencies.
 
-> hextol is in the planning stage; the API will grow as the package takes shape.
+```python
+from hextol import is_match
 
-## Install (development)
+is_match("#3B82F6", (59, 128, 240), tolerance=10)                 # single colors
+is_match(pixels, "#3B82F6", tolerance=10, aggregate="majority")   # whole regions
+```
+
+`tolerance` lives on a normalized 0–100 scale under every distance method
+(`channel`, `euclidean`, `weighted`/redmean), so configs can switch methods
+without re-tuning. Raw distances stay available via
+`hextol.compare.distances(..., normalize=False)` or `hextol.distance.<method>.raw`.
+
+## Install
+
+```bash
+pip install hextol            # comparison core — zero dependencies
+pip install hextol[extract]   # + dominant-color extraction (numpy, Pillow) — coming soon
+```
+
+## Development
 
 ```bash
 git clone https://github.com/MLMecham/hextol
@@ -17,4 +34,6 @@ uv run pytest
 
 ## Docs
 
-https://mlmecham.github.io/hextol
+https://mlmecham.github.io/hextol — full API reference and a method/tolerance guide.
+
+See `PLAN.md` for the roadmap (gradients, palette extraction, clustering, GUI).
