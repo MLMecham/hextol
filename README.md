@@ -20,7 +20,7 @@ without re-tuning. Raw distances stay available via
 
 ```bash
 pip install hextol            # comparison core — zero dependencies
-pip install hextol[extract]   # + dominant-color extraction (numpy, Pillow) — coming soon
+pip install hextol[extract]   # + dominant-color extraction (numpy, Pillow)
 ```
 
 ## Development

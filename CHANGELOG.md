@@ -6,6 +6,10 @@
 
 - `hextol.gradient.build_gradient(color_a, color_b, steps, space)` — ordered
   hex ramps in RGB or HSL space (HSL interpolates hue along the shorter arc).
+- `hextol.extract.dominant_color(image, k)` — dominant colors via hand-rolled
+  numpy k-means, largest cluster first; accepts file paths, PIL Images, and
+  numpy arrays; subsamples large inputs; deterministic by default (`seed=0`).
+  Requires the new `[extract]` extra (numpy + Pillow). `[all]` extra added.
 
 ## v0.1.0 (19/07/2026)
 

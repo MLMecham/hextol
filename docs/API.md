@@ -15,3 +15,7 @@
 ## gradient
 
 ::: hextol.gradient
+
+## extract (requires `[extract]`)
+
+::: hextol.extract

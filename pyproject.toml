@@ -22,11 +22,20 @@ Homepage = "https://mlmecham.github.io/hextol"
 Repository = "https://github.com/MLMecham/hextol"
 
 [project.optional-dependencies]
+extract = [
+    "numpy>=1.24",
+    "Pillow>=10.0",
+]
+all = [
+    "numpy>=1.24",
+    "Pillow>=10.0",
+]
 dev = [
     "pytest>=8.0",
     "pytest-cov",
     "ruff",
-    "numpy",  # not a runtime dep — installed in dev only to test the array duck-typing path
+    "numpy",  # core stays zero-dep — dev installs these to test extract and duck-typing
+    "Pillow",
 ]
 docs = [
     "mkdocs>=1.6",

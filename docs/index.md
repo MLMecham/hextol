@@ -9,6 +9,7 @@ values need comparing.
 
 ```bash
 pip install hextol          # color/region comparison — zero dependencies
+pip install hextol[extract] # + dominant-color extraction (numpy, Pillow)
 ```
 
 ## Quick start
