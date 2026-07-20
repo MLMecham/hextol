@@ -16,6 +16,10 @@
 
 ::: hextol.gradient
 
+## cluster
+
+::: hextol.cluster
+
 ## extract (requires `[extract]`)
 
 ::: hextol.extract

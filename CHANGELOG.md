@@ -2,7 +2,7 @@
 
 <!--next-version-placeholder-->
 
-## Unreleased
+## v0.2.0 (19/07/2026)
 
 - `hextol.gradient.build_gradient(color_a, color_b, steps, space)` — ordered
   hex ramps in RGB or HSL space (HSL interpolates hue along the shorter arc).
@@ -10,6 +10,9 @@
   numpy k-means, largest cluster first; accepts file paths, PIL Images, and
   numpy arrays; subsamples large inputs; deterministic by default (`seed=0`).
   Requires the new `[extract]` extra (numpy + Pillow). `[all]` extra added.
+- `hextol.cluster.group_similar(colors, tolerance, method)` — tolerance-based
+  dedupe via greedy leader clustering; luminance-sorted input makes results
+  order-independent; no chaining through intermediate colors. Zero-dep.
 
 ## v0.1.0 (19/07/2026)
 
