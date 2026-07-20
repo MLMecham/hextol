@@ -55,6 +55,28 @@ _SWATCH_W, _SWATCH_H = 190, 110
 _EMPTY = "-"
 
 
+def _enable_windows_dpi_awareness() -> None:
+    """Make the process DPI-aware on Windows so tk windows use physical pixels.
+
+    Without this, on a scaled display (125%, 150%, ...) the fullscreen frozen
+    screenshot renders larger than the window and drifts away from the cursor.
+    Safe no-op elsewhere, and harmless if awareness was already set.
+    """
+    import sys
+
+    if sys.platform != "win32":
+        return
+    import ctypes
+
+    try:
+        ctypes.windll.shcore.SetProcessDpiAwareness(2)  # per-monitor aware
+    except Exception:
+        try:
+            ctypes.windll.user32.SetProcessDPIAware()
+        except Exception:
+            pass
+
+
 def _scaled_coords(image, x: int, y: int, shown_w: int, shown_h: int) -> tuple[int, int]:
     """Map a click at (x, y) on a shown_w x shown_h canvas onto ``image`` coords.
 
@@ -207,7 +229,14 @@ class ComparisonApp:
         top.attributes("-topmost", True)
         canvas = tk.Canvas(top, cursor="none", highlightthickness=0, bg="black")
         canvas.pack(fill="both", expand=True)
-        photo = ImageTk.PhotoImage(shot)
+        # With DPI awareness the screenshot and window sizes agree; if they
+        # still differ (fallback path), rescale the *display* copy to fit the
+        # window while sampling stays on the full-resolution original.
+        shown_w, shown_h = top.winfo_screenwidth(), top.winfo_screenheight()
+        display = shot
+        if (shot.width, shot.height) != (shown_w, shown_h):
+            display = shot.resize((shown_w, shown_h))
+        photo = ImageTk.PhotoImage(display)
         canvas._photo = photo  # keep a reference or tk garbage-collects it
         canvas.create_image(0, 0, image=photo, anchor="nw")
 
@@ -229,9 +258,7 @@ class ComparisonApp:
             self.root.deiconify()
 
         def physical(event):
-            return _scaled_coords(
-                shot, event.x, event.y, canvas.winfo_width(), canvas.winfo_height()
-            )
+            return _scaled_coords(shot, event.x, event.y, shown_w, shown_h)
 
         def on_move(event):
             px, py = physical(event)
@@ -246,16 +273,16 @@ class ComparisonApp:
             zoom_photo = ImageTk.PhotoImage(zoom)
             canvas._zoom_photo = zoom_photo
 
-            # keep the loupe on-screen: flip to the other side near edges
-            w, h = canvas.winfo_width(), canvas.winfo_height()
-            lx = event.x + 100 if event.x + 100 + d / 2 < w else event.x - 100
-            ly = event.y + 100 if event.y + 100 + d / 2 + 30 < h else event.y - 100
+            # loupe is centered on the cursor: the highlighted center cell IS
+            # the pixel that a click samples
+            lx, ly = event.x, event.y
             canvas.itemconfigure(loupe, image=zoom_photo)
             canvas.coords(loupe, lx, ly)
             canvas.coords(ring, lx - d / 2, ly - d / 2, lx + d / 2, ly + d / 2)
             s = scale / 2
             canvas.coords(center, lx - s, ly - s, lx + s, ly + s)
-            canvas.coords(label, lx, ly + d / 2 + 16)
+            label_y = ly + d / 2 + 16 if ly + d / 2 + 30 < shown_h else ly - d / 2 - 16
+            canvas.coords(label, lx, label_y)
             canvas.itemconfigure(label, text=color)
             bbox = canvas.bbox(label)
             canvas.coords(label_bg, bbox[0] - 6, bbox[1] - 3, bbox[2] + 6, bbox[3] + 3)
@@ -315,6 +342,7 @@ class ComparisonApp:
 
 def main() -> None:
     """Launch the comparison explorer window."""
+    _enable_windows_dpi_awareness()  # must happen before the Tk root exists
     root = tk.Tk()
     ComparisonApp(root)
     root.mainloop()
