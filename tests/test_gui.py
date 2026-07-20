@@ -47,7 +47,30 @@ class TestComparisonApp:
         app.color_vars["A"].set("#NOTHEX")
         app.refresh()
         assert "Invalid" in app.status.cget("text")
-        assert all(row["verdict"].cget("text") == "—" for row in app.rows.values())
+        assert all(row["verdict"].cget("text") == "-" for row in app.rows.values())
+
+    def test_no_em_dashes_anywhere_in_ui_text(self, root):
+        import hextol.gui as gui_module
+        import inspect
+
+        assert "—" not in inspect.getsource(gui_module)
+
+
+class TestScreenPickerMath:
+    class FakeShot:
+        width, height = 200, 100
+
+    def test_scales_logical_to_physical_coords(self):
+        from hextol.gui import _scaled_coords
+
+        # screenshot is 200x100 physical, window reports 100x50 logical (2x DPI)
+        assert _scaled_coords(self.FakeShot(), 50, 25, 100, 50) == (100, 50)
+
+    def test_clamps_to_image_bounds(self):
+        from hextol.gui import _scaled_coords
+
+        assert _scaled_coords(self.FakeShot(), 500, 500, 100, 50) == (199, 99)
+        assert _scaled_coords(self.FakeShot(), -5, -5, 100, 50) == (0, 0)
 
 
 class TestCoreStaysClean:

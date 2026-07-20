@@ -4,10 +4,14 @@
 
 ## Unreleased
 
-- `hextol.gui` + `hextol-gui` command — tkinter comparison explorer: pick two
+- `hextol.gui` + `hextol-gui` command: tkinter comparison explorer. Pick two
   colors, drag a tolerance slider, and watch all three methods judge the pair
   side by side (normalized + raw distances, live match/miss verdicts, gradient
-  strip). Stdlib-only; never imported by `import hextol`.
+  strip). Dark theme matching the hextol branding. Never imported by
+  `import hextol`; core UI is stdlib-only.
+- Screen picker in the explorer (needs Pillow): freeze-frame screenshot with a
+  magnifier loupe (pixel grid, center highlight, live hex badge); click to
+  sample, Esc or right-click to cancel.
 
 ## v0.2.0 (19/07/2026)
 
