@@ -38,6 +38,13 @@ parameter value.
 Aggregating one region across many moments is `matches_across(rule=...)` (v2).
 The two never share parameter names.
 
+**Statelessness:** hextol is a comparison library, not a processing pipeline. It
+never owns a loop, a timer, a buffer, or a screen handle — it takes values in and
+returns judgments. `matches_across` is therefore a pure function over a list of
+frames *the caller already collected*; polling cadence and frame buffering belong
+to keydaemon (which has the scheduler and screen access). No stateful
+sliding-window matcher objects, in any version.
+
 ---
 
 ## Distribution / Install Matrix
@@ -145,8 +152,17 @@ hue interpolates along the shorter arc). Pure `convert.py` reuse.
 `group_similar(colors, tolerance, method="euclidean") -> list[list[hex_str]]` —
 greedy leader clustering: each color joins the first existing group whose leader
 is within tolerance, else founds a new group. Greedy is the documented, honest
-answer to non-transitivity (A≈B, B≈C, A≉C). Distance math comes from
-`distance.py` only — one source of truth.
+answer to non-transitivity (A≈B, B≈C, A≉C). Input is sorted deterministically
+first (by luminance) so results don't depend on caller ordering. Distance math
+comes from `distance.py` only — one source of truth.
+
+Alternatives considered and rejected: connected-components/single-linkage (chains
+distant colors together through intermediates — the opposite of a tolerance
+dedupe), centroid-based (drifting group means make membership history-dependent),
+k-means (requires knowing k up front), DBSCAN/hierarchical (heavy machinery for a
+shortlist of hex codes). If a stricter mode is ever needed, complete-linkage
+(within tolerance of *every* member) is the only candidate worth adding, as an
+opt-in `linkage=` param.
 
 ## extract.py (requires `[extract]`)
 
