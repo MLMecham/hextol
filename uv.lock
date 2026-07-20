@@ -330,7 +330,7 @@ requires-dist = [
     { name = "pytest-cov", marker = "extra == 'dev'" },
     { name = "ruff", marker = "extra == 'dev'" },
 ]
-provides-extras = ["extract", "all", "dev", "docs"]
+provides-extras = ["gui", "extract", "all", "dev", "docs"]
 
 [[package]]
 name = "idna"

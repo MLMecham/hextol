@@ -21,7 +21,12 @@ maintainers = [
 Homepage = "https://mlmecham.github.io/hextol"
 Repository = "https://github.com/MLMecham/hextol"
 
+[project.scripts]
+hextol-gui = "hextol.gui:main"
+
 [project.optional-dependencies]
+# tkinter ships with Python (not pip-installable) — [gui] is a documentation marker
+gui = []
 extract = [
     "numpy>=1.24",
     "Pillow>=10.0",

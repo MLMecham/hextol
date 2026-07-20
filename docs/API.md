@@ -23,3 +23,7 @@
 ## extract (requires `[extract]`)
 
 ::: hextol.extract
+
+## gui
+
+::: hextol.gui

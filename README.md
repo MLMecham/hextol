@@ -23,6 +23,9 @@ pip install hextol            # comparison core — zero dependencies
 pip install hextol[extract]   # + dominant-color extraction (numpy, Pillow)
 ```
 
+Not sure which method fits? `hextol-gui` opens a small tkinter explorer showing
+all three methods judge your two colors live as you drag the tolerance slider.
+
 ## Development
 
 ```bash

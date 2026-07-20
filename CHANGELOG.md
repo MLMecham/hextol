@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## Unreleased
+
+- `hextol.gui` + `hextol-gui` command — tkinter comparison explorer: pick two
+  colors, drag a tolerance slider, and watch all three methods judge the pair
+  side by side (normalized + raw distances, live match/miss verdicts, gradient
+  strip). Stdlib-only; never imported by `import hextol`.
+
 ## v0.2.0 (19/07/2026)
 
 - `hextol.gradient.build_gradient(color_a, color_b, steps, space)` — ordered

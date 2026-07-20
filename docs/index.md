@@ -43,6 +43,10 @@ re-tuning the number.
 Need raw (unnormalized) distances? `hextol.compare.distances(..., normalize=False)`
 or `hextol.distance.euclidean.raw(a, b)`.
 
+Not sure which to pick? Run **`hextol-gui`** — a small tkinter explorer that
+shows all three methods judging your two colors side by side as you drag the
+tolerance slider.
+
 ## Development install
 
 ```bash
