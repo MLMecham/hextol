@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## Unreleased
+
+- `hextol.gradient.build_gradient(color_a, color_b, steps, space)` — ordered
+  hex ramps in RGB or HSL space (HSL interpolates hue along the shorter arc).
+
 ## v0.1.0 (19/07/2026)
 
 Phase 1 of PLAN.md — the zero-dependency comparison core:

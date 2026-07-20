@@ -11,3 +11,7 @@
 ## distance
 
 ::: hextol.distance
+
+## gradient
+
+::: hextol.gradient
