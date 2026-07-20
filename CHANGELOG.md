@@ -2,6 +2,6 @@
 
 <!--next-version-placeholder-->
 
-## v0.0.1 (13/01/2026)
+## v0.0.1 (19/07/2026)
 
-- First release of `template_package`!
+- Project scaffolding for `hextol` — package renamed out of the template stage.

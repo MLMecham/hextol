@@ -3,34 +3,36 @@ requires = ["uv_build >= 0.9.21, <0.10.0"]
 build-backend = "uv_build"
 
 [project]
-name = "pypackage_template"
+name = "hextol"
 version = "0.0.1"
-description = "A small example package managed with uv"
+description = "Hexadecimal comparison utilities"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
-dependencies = [
-    "polars==1.37.0",
-]
+dependencies = []
 authors = [
-  { name = "J. Hathaway", email = "hathawayj@byui.edu" },
-  { name = "Co Author", email = "coauthor@example.com" }
+    { name = "MLMecham", email = "mechamit000@gmail.com" },
+]
+maintainers = [
+    { name = "MLMecham", email = "mechamit000@gmail.com" },
 ]
 
-# optional, if you want to distinguish current maintainers
-maintainers = [
-  { name = "Maintainer Name", email = "maintainer@example.com" }
-]
+[project.urls]
+Homepage = "https://mlmecham.github.io/hextol"
+Repository = "https://github.com/MLMecham/hextol"
 
 [project.optional-dependencies]
 dev = [
-    "pytest",
+    "pytest>=8.0",
+    "pytest-cov",
     "ruff",
-    { path = ".", develop = true },
+]
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.26",
 ]
 
-[project.scripts]
-my-uv-cli = "my_uv_package.cli:main"
-
-[tool.uv]
-# Here you can put uv-specific configuration if needed later
-# (you can leave this section out entirely for the simplest case)
+[tool.ruff]
+line-length = 100
+target-version = "py310"

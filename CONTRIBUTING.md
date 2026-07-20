@@ -40,21 +40,25 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `template_package` for local development.
+Ready to contribute? Here's how to set up `hextol` for local development.
 
-1. Download a copy of `template_package` locally.
-
-2. Create and activate a conda environment for `template_package`:
+1. Download a copy of `hextol` locally:
 
     ```console
-    $ conda create -n template_package python=3.12
-    $ conda activate template_package
+    $ git clone https://github.com/MLMecham/hextol
+    $ cd hextol
     ```
 
-3. Install `template_package` using `poetry`:
+2. Install `hextol` with its dev dependencies using `uv`:
 
     ```console
-    $ poetry install
+    $ uv sync --extra dev
+    ```
+
+3. Run the tests to make sure everything works:
+
+    ```console
+    $ uv run pytest
     ```
 
 4. Use `git` (or similar) to create a branch for local development and make your changes:
@@ -77,5 +81,5 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ## Code of Conduct
 
-Please note that the `template_package` project is released with a
+Please note that the `hextol` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.

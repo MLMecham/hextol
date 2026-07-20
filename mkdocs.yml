@@ -1,37 +1,42 @@
-site_name: Example MkDocs Material Documentation for pypackage_template
-site_url: https://byuirpytooling.github.io/pypackage_template
+site_name: hextol
+site_description: Hexadecimal comparison utilities.
+site_url: https://mlmecham.github.io/hextol
+repo_url: https://github.com/MLMecham/hextol
+repo_name: MLMecham/hextol
+
 theme:
   name: material
-  icon:
-    logo: fontawesome/solid/wind
   favicon: assets/favicon.ico
-  featuers:
+  features:
+    - navigation.tabs
+    - navigation.top
     - navigation.footer
+    - content.code.copy
+    - search.suggest
   font:
     text: Merriweather Sans
     code: Red Hat Mono
   palette:
-    # Dark Mode
     - scheme: slate
+      primary: teal
+      accent: cyan
       toggle:
         icon: material/weather-sunny
-        name: Dark mode
-      primary: green
-      accent: deep purple
-
-    # Light Mode
+        name: Switch to light mode
     - scheme: default
+      primary: teal
+      accent: cyan
       toggle:
         icon: material/weather-night
-        name: Light mode
-      primary: blue
-      accent: deep orange
+        name: Switch to dark mode
 
 watch:
-  - src/pypackage_template
+  - src/hextol
 
 markdown_extensions:
   - attr_list
+  - admonition
+  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -48,8 +53,6 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
-  - admonition
-  - pymdownx.details
 
 plugins:
   - search
@@ -64,9 +67,9 @@ plugins:
 
 extra:
   social:
-    - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/@byuidss
+    - icon: fontawesome/brands/github
+      link: https://github.com/MLMecham
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/school/byu-idaho
+      link: https://www.linkedin.com/in/mitchell-mecham/
 
-copyright: Copyright &copy; 2026 J. Hathaway
+copyright: Copyright &copy; 2026 Mitchell Mecham

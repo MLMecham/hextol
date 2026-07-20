@@ -1,17 +1,18 @@
-# Welcome to MkDocs
+# hextol
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+**Hexadecimal comparison utilities.** Built as a support package for
+[KeyDaemon](https://mlmecham.github.io/keydeamon/), and for anywhere else
+hex values need comparing.
 
-## Commands
+!!! note "Early days"
+    hextol is in the planning stage — the API will grow as the
+    package takes shape.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Install
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+```bash
+git clone https://github.com/MLMecham/hextol
+cd hextol
+uv sync --extra dev
+uv run pytest
+```
