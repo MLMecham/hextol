@@ -4,14 +4,24 @@
 
 ## Unreleased
 
-- `hextol.gui` + `hextol-gui` command: tkinter comparison explorer. Pick two
-  colors, drag a tolerance slider, and watch all three methods judge the pair
-  side by side (normalized + raw distances, live match/miss verdicts, gradient
-  strip). Dark theme matching the hextol branding. Never imported by
-  `import hextol`; core UI is stdlib-only.
+- `hextol.gui` + `hextol-gui` command: tkinter comparison explorer, now two
+  tabs sharing one tolerance slider, one per form of sample `is_match` accepts.
+  Dark theme matching the hextol branding. Never imported by `import hextol`;
+  core UI is stdlib-only.
+- **Color** tab: pick two colors, drag the tolerance slider, and watch all
+  three methods judge the pair side by side (normalized + raw distances, live
+  match/miss verdicts, gradient strip).
+- **Region** tab: capture a screen rectangle or load an image, then read the
+  whole method x aggregate grid at once against a target color. Shows the two
+  numbers every verdict derives from (share of pixels individually within
+  tolerance, and mean distance), with aggregate columns ordered loosest first
+  so a MATCH fills in from the left. A region is held as plain RGB tuples and
+  judged by hextol itself, so the analysis path needs no extras; PNG and GIF
+  load through tkinter alone.
 - Screen picker in the explorer (needs Pillow): freeze-frame screenshot with a
   magnifier loupe (pixel grid, center highlight, live hex badge); click to
-  sample, Esc or right-click to cancel.
+  sample, Esc or right-click to cancel. Region capture reuses the same freeze
+  with a drag-out rectangle and dimmed surroundings.
 
 ## v0.2.0 (19/07/2026)
 
